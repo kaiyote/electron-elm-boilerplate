@@ -1,4 +1,4 @@
-port module Main exposing (..)
+port module Nested.Main exposing (..)
 
 import Html exposing (Html, div, text, ul, li, button)
 import Html.App as Html exposing (map)
