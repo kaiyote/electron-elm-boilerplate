@@ -3,31 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <title>electron-elm-example example</title>
-    <style>
-      .container {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 30%;
-        height: 100%;
-      }
-
-      .container#right {
-        left: 30%;
-        background: #ddd;
-      }
-
-      .logs {
-        position: absolute;
-        left: 60%;
-        font-size: 12px;
-      }
-    </style>
   </head>
   <body>
-    <div class="container" id="left"></div>
-    <div class="container right" id="right"></div>
-    <div class="logs" id="logs"></div>
+    <div id="main"></div>
     <script>
       (function() {
         const script = document.createElement('script');

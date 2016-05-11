@@ -4,12 +4,17 @@ export default {
   module: {
     loaders: [{
       test: /\.elm$/,
-      exclude: [/elm-stuff/, /node_modules/]
+      exclude: [/elm-stuff/, /node_modules/],
       loaders: ['elm-webpack']
     }, {
+      test: /\.js$/,
+      exclude: [/node_modules/],
+      loader: 'babel'
+    }, {
       test: /\.json$/,
-      loader: 'json-loader'
-    }]
+      loader: 'json'
+    }],
+    noParse: /\.elm$/
   },
   output: {
     path: path.join(__dirname, 'dist'),

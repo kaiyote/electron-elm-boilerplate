@@ -5,7 +5,9 @@
 [Electron](http://electron.atom.io/) application boilerplate based on [Elm](http://elm-lang.org/docs) and [Webpack](http://webpack.github.io/docs/), for rapid, statically-typed application development
 
 ## IMPORTANT NOTE
-This seed app is currently in active development. The list of dependencies will probably not work for what you want to do with the code that exists here. You have been warned.
+- This seed app is currently in active development. The list of dependencies will probably not work for what you want to do with the code that exists here. You have been warned.
+- elm-webpack-loader does not currently behave inside the electron environment, but it can be convinced to work by replacing the string of code in the `resultWithExports` array with the following: `'if (typeof module === "object") var Elm = module.exports;\nelse module.exports = Elm;'`. I have opened an issue with that package.
+- elm-hot-loader does not work at all with Elm v0.17.0. The author is aware, but for now there is nothing I want/know how to do about it. I'm leaving it in since it doesn't hurt anything, but just be aware that hot reloading will not function with elm modules.
 
 ## Install
 

@@ -7,8 +7,6 @@ const config = {
 
   debug: true,
 
-  devtool: 'cheap-module-eval-source-map',
-
   entry: [
     'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr',
     './app/index'
@@ -41,6 +39,6 @@ const config = {
   target: 'electron-renderer'
 };
 
-config.module.loaders[0].loaders.unshift('elm-hot');
+//config.module.loaders[0].loaders.unshift('elm-hot');
 
 export default config;
