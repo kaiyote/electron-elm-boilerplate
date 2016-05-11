@@ -1,18 +1,21 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { Router, hashHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
-import routes from './routes';
-import configureStore from './store/configureStore';
-import './app.global.css';
+'use strict';
 
-const store = configureStore();
-const history = syncHistoryWithStore(hashHistory, store);
+var Elm = require('./Main');
+var Elm2 = require('./Nested/Main');
 
-render(
-  <Provider store={store}>
-    <Router history={history} routes={routes} />
-  </Provider>,
-  document.getElementById('root')
-);
+var left = document.getElementById('left');
+var right = document.getElementById('right');
+var logs = document.getElementById('logs');
+
+function appendLog(source, log) {
+  var node = document.createElement('div');
+  node.style.color = 'red';
+  node.innerHTML = '[' + source + '] ' + log + ', time = ' + Date.now();
+  logs.appendChild(node);
+}
+
+var elmLeft = Elm.embed(Elm.Main, left, { swap: false });
+elmLeft.ports.logs.subscribe(appendLog.bind(null, 'Elm.Main'));
+
+var elmRight = Elm2.embed(Elm2.Nested.Main, right, { swap: false });
+elmRight.ports.logs.subscribe(appendLog.bind(null, 'Elm.Nested.Main'));

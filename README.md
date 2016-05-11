@@ -1,25 +1,23 @@
-# electron-react-boilerplate
-
-[![NPM version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Dependency Status][david_img]][david_site]
-
-![](./erb-logo.png)
+# electron-elm-boilerplate
 
 > Live editing development on desktop app
 
-[Electron](http://electron.atom.io/) application boilerplate based on [React](https://facebook.github.io/react/), [Redux](https://github.com/reactjs/redux), [React Router](https://github.com/reactjs/react-router), [Webpack](http://webpack.github.io/docs/), [React Transform HMR](https://github.com/gaearon/react-transform-hmr) for rapid application development
+[Electron](http://electron.atom.io/) application boilerplate based on [Elm](http://elm-lang.org/docs) and [Webpack](http://webpack.github.io/docs/), for rapid, statically-typed application development
 
-## Screenshot
-
-![](https://cloud.githubusercontent.com/assets/3382565/10557547/b1f07a4e-74e3-11e5-8d27-79ab6947d429.gif)
+## IMPORTANT NOTE
+This seed app is currently in active development. The list of dependencies will probably not work for what you want to do with the code that exists here. You have been warned.
 
 ## Install
 
-First, clone the repo via git:
+First, install Elm (this project uses Elm v0.17.0+ syntax)
+```bash
+npm install -g elm
+```
+
+Then, clone the repo via git:
 
 ```bash
-git clone https://github.com/chentsulin/electron-react-boilerplate.git your-project-name
+git clone https://github.com/kaiyote/electron-elm-boilerplate.git your-project-name
 ```
 
 And then install dependencies.
@@ -28,10 +26,12 @@ And then install dependencies.
 $ cd your-project-name && npm install
 ```
 
+This project is configured to require Node 6+. If you don't have that installed, you'll either need to augment the babel setup or upgrade your node.
+
 
 ## Run
 
-Run this two commands __simultaneously__ in different console tabs.
+Run these two commands __simultaneously__ in different console tabs.
 
 ```bash
 $ npm run hot-server
@@ -44,7 +44,7 @@ or run two servers with one command
 $ npm run dev
 ```
 
-*Note: requires a node version >= 4 and an npm version >= 2.*
+*Note: requires a node version >= 6 and an npm version >= 3.*
 
 
 ## DevTools
@@ -56,16 +56,6 @@ $ npm run dev
 - Windows: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd> or <kbd>F12</kbd>
 
 *See [electron-debug](https://github.com/sindresorhus/electron-debug) for more information.*
-
-#### Toggle Redux DevTools
-
-- All platforms: <kbd>Ctrl+H</kbd>
-
-*See [redux-devtools-dock-monitor](https://github.com/gaearon/redux-devtools-dock-monitor) for more information.*
-
-#### Redux Devtools Window
-
-Now you can implement it using [remote-redux-devtools](https://github.com/zalmoxisus/remote-redux-devtools) with a [remote monitor](https://github.com/zalmoxisus/remote-redux-devtools#remote-monitoring) by yourself.
 
 
 ## Externals
@@ -79,16 +69,6 @@ externals: [
 ```
 
 You can find those lines in the file.
-
-
-## CSS Modules
-
-This boilerplate out of the box is configured to use [css-modules](https://github.com/css-modules/css-modules).
-
-All `.css` file extensions will use css-modules unless it has `.global.css`.
-
-If you need global styles, stylesheets with `.global.css` will not go through the
-css-modules loader. e.g. `app.global.css`
 
 
 ## Package
@@ -113,7 +93,7 @@ $ npm run package-all
 
 Use `electron-packager` to pack your app with `--all` options for darwin (osx), linux and win32 (windows) platform. After build, you will find them in `release` folder. Otherwise, you will only find one for your os.
 
-`test`, `tools`, `release` folder and devDependencies in `package.json` will be ignored by default.
+`test`, `release` folder and devDependencies in `package.json` will be ignored by default.
 
 #### Default Ignore modules
 
@@ -128,29 +108,12 @@ We add some module's `peerDependencies` to ignore option as default for applicat
 
 Please checkout [Building windows apps from non-windows platforms](https://github.com/maxogden/electron-packager#building-windows-apps-from-non-windows-platforms).
 
-## How hot-reloading works on Electron
-
-We use [webpack-target-electron-renderer](https://github.com/chentsulin/webpack-target-electron-renderer) to provide a build target for electron renderer process. Read more information [here](https://github.com/chentsulin/webpack-target-electron-renderer#how-this-module-works).
-
-> Note: webpack >= 1.12.15 has built-in support for `electron-main` and `electron-renderer` targets.
-
-## Native-like UI
-
-If you want to have native-like User Interface (OS X El Capitan and Windows 10), [react-desktop](https://github.com/gabrielbull/react-desktop) may perfect suit for you.
-
 
 ## Maintainers
 
-- [C. T. Lin](https://github.com/chentsulin)
-- [Jhen-Jie Hong](https://github.com/jhen0409)
+- [Tim Huddle](https://github.com/kaiyote)
+- Based on [Electron React Boilerplate](https://github.com/chentsulin/electron-react-boilerplate)
 
 
 ## License
-MIT © [C. T. Lin](https://github.com/chentsulin)
-
-[npm-image]: https://img.shields.io/npm/v/electron-react-boilerplate.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/electron-react-boilerplate
-[travis-image]: https://travis-ci.org/chentsulin/electron-react-boilerplate.svg?branch=master
-[travis-url]: https://travis-ci.org/chentsulin/electron-react-boilerplate
-[david_img]: https://img.shields.io/david/chentsulin/electron-react-boilerplate.svg
-[david_site]: https://david-dm.org/chentsulin/electron-react-boilerplate
+MIT © [Tim Huddle](https://github.com/kaiyote)

@@ -1,5 +1,4 @@
 import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import baseConfig from './webpack.config.base';
 
 const config = {
@@ -19,23 +18,7 @@ const config = {
     ...baseConfig.module,
 
     loaders: [
-      ...baseConfig.module.loaders,
-
-      {
-        test: /\.global\.css$/,
-        loader: ExtractTextPlugin.extract(
-          'style-loader',
-          'css-loader'
-        )
-      },
-
-      {
-        test: /^((?!\.global).)*\.css$/,
-        loader: ExtractTextPlugin.extract(
-          'style-loader',
-          'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-        )
-      }
+      ...baseConfig.module.loaders
     ]
   },
 
@@ -53,8 +36,7 @@ const config = {
         screw_ie8: true,
         warnings: false
       }
-    }),
-    new ExtractTextPlugin('style.css', { allChunks: true })
+    })
   ],
 
   target: 'electron-renderer'

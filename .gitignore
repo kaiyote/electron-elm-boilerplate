@@ -34,3 +34,9 @@ dist
 release
 main.js
 main.js.map
+
+# Sublime stuff
+*.sublime-workspace
+
+# elm stuff
+elm-stuff

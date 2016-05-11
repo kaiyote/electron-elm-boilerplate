@@ -22,23 +22,7 @@ const config = {
   module: {
     ...baseConfig.module,
     loaders: [
-      ...baseConfig.module.loaders,
-
-      {
-        test: /\.global\.css$/,
-        loaders: [
-          'style-loader',
-          'css-loader?sourceMap'
-        ]
-      },
-
-      {
-        test: /^((?!\.global).)*\.css$/,
-        loaders: [
-          'style-loader',
-          'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-        ]
-      }
+      ...baseConfig.module.loaders
     ]
   },
 
@@ -56,5 +40,7 @@ const config = {
 
   target: 'electron-renderer'
 };
+
+config.module.loaders[0].loaders.unshift('elm-hot');
 
 export default config;

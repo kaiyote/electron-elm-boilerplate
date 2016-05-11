@@ -3,9 +3,9 @@ import path from 'path';
 export default {
   module: {
     loaders: [{
-      test: /\.jsx?$/,
-      loaders: ['babel-loader'],
-      exclude: /node_modules/
+      test: /\.elm$/,
+      exclude: [/elm-stuff/, /node_modules/]
+      loaders: ['elm-webpack']
     }, {
       test: /\.json$/,
       loader: 'json-loader'
@@ -17,7 +17,7 @@ export default {
     libraryTarget: 'commonjs2'
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['', '.js', '.elm'],
     packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main']
   },
   plugins: [
