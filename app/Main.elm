@@ -1,11 +1,13 @@
-port module Main exposing (..)
+module Main exposing (..)
 
 import Html exposing (Html, div, text, ul, li, button)
 import Html.App as Html exposing (map)
 import Html.Events exposing (onClick)
 import Maybe exposing (Maybe)
 import Counter
+import Nested.Main exposing (swap, callJSLog)
 
+import Debug exposing (log)
 
 type Msg
   = Swap (Maybe Bool)
@@ -41,7 +43,7 @@ init =
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
-  case msg of
+  case log "msg" msg of
     Swap _ ->
       (model, Cmd.none)
 
@@ -56,9 +58,6 @@ update msg model =
 
 
 -- SUBSCRIPTIONS
-
-
-port swap : (Maybe Bool -> msg) -> Sub msg
 
 
 subscriptions : Model -> Sub Msg
@@ -83,6 +82,3 @@ view model =
 getLog : Model -> String
 getLog model =
   ("Count = " ++ (toString model.counter))
-
-
-port callJSLog : String -> Cmd msg

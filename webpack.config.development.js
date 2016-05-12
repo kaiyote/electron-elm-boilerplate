@@ -39,6 +39,6 @@ const config = {
   target: 'electron-renderer'
 };
 
-//config.module.loaders[0].loaders.unshift('elm-hot');
+config.module.loaders[0].loaders.unshift('elm-hot');
 
 export default config;
