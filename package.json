@@ -2,7 +2,7 @@
   "name": "electron-elm-boilerplate",
   "productName": "ElectronElm",
   "version": "0.0.1",
-  "description": "Electron application boilerplate based on Elm & Webpack for rapid, staticly-typed application development",
+  "description": "Electron application boilerplate based on Elm & Webpack for rapid, statically-typed application development",
   "main": "main.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test mocha --compilers js:babel-register --recursive --require ./test/setup.js test/**/*.spec.js",
@@ -17,7 +17,7 @@
     "start-hot": "cross-env HOT=1 NODE_ENV=development electron -r babel-register ./main.development",
     "package": "cross-env NODE_ENV=production node -r babel-register package.js",
     "package-all": "npm run package -- --all",
-    "postinstall": "node node_modules/fbjs-scripts/node/check-dev-engines.js package.json && elm package install",
+    "postinstall": "node node_modules/fbjs-scripts/node/check-dev-engines.js package.json && elm package install -y",
     "dev": "concurrently --kill-others \"npm run hot-server\" \"npm run start-hot\""
   },
   "bin": {

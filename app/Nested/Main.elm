@@ -72,7 +72,7 @@ subscriptions model =
 view : Model -> Html Msg
 view model =
   div []
-    [ text "counter (Elm.Main):"
+    [ text "counter (Elm.Nested.Main):"
     , map CounterMsg (Counter.view model.counter)
     , text "logs:"
     , button [ onClick (AppendLog (getLog model)) ] [ text "append log" ]
