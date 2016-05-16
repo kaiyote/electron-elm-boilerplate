@@ -2,21 +2,16 @@
 
 import Elm from './Main';
 
-let left = document.getElementById('left');
-let center = document.getElementById('center');
-let right = document.getElementById('right');
-var logs = document.getElementById('logs');
+let container = document.getElementById('container');
+var counter = Elm.Main.embed(container, { path: '/' });
 
-function appendLog(source, log) {
-  let node = document.createElement('div');
-  node.style.color = 'red';
-  node.innerText = '[' + source + '] ' + log + ', time = ' + Date.now();
-  logs.appendChild(node);
-}
+window.onpopstate = (event) => {
+  counter.ports.path.send(window.location.pathname);
+};
 
-let elmLeft = Elm.Main.embed(left);
-elmLeft.ports.callJSLog.subscribe(appendLog.bind(null, 'Elm.Main'));
-
-
-let elmRight = Elm.Main.embed(right);
-elmRight.ports.callJSLog.subscribe(appendLog.bind(null, 'Elm.Main 2'));
+counter.ports.pushPath.subscribe((path) => {
+  console.log("pushPath: " + path);
+  window.history.pushState({}, "", path);
+  console.log("pathname: " + window.location.pathname);
+  counter.ports.path.send(window.location.pathname);
+});

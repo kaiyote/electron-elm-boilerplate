@@ -3,43 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <title>electron-elm-boilerplate example</title>
-    <style>
-      body {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        justify-content: space-around;
-      }
-
-      .row {
-        display: flex;
-        flex-direction: row;
-        align-items: stretch;
-        justify-content: space-around;
-      }
-
-      .container {
-        display: flex;
-        flex: 1 0 auto;
-        max-height: 50vh;
-        min-height: 50vh;
-      }
-
-      .container#center {
-        left: 30%;
-        background: #ddd;
-      }
-    </style>
+    <link href="./style.css" rel="stylesheet">
   </head>
   <body>
-    <div class="row">
-      <div class="container" id="left"></div>
-      <div class="container" id="center"></div>
-      <div class="container" id="right"></div>
-    </div>
-    <div class="row">
-      <div id="logs"></div>
-    </div>
+    <div id="container"></div>
     <script>
       (function() {
         const script = document.createElement('script');
