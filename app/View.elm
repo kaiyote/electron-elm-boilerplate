@@ -26,10 +26,10 @@ home =
 counter : Model -> Html Msg
 counter model =
   div []
-    [ div [ class "backButton" ] [ link (Home ()) (i [ class "fa fa-arrow-left fa-3x" ] []) ]
+    [ div [ class "backButton" ] [ link (Home ()) (i [ class "fa fa-arrow-left fa-3x" ] [ ]) ]
     , div [ class "counter" ] [ text (toString model.count) ]
     , div [ class "btnGroup" ]
-        [ button [ class "btn", onClick Increment ]
+        [ button [ class "btn", onClick (Increment Nothing) ]
             [ i [ class "fa fa-plus" ] []
             ]
         , button [ class "btn", onClick Decrement ]
@@ -38,13 +38,16 @@ counter model =
         , button [ class "btn", onClick IncrementIfOdd ]
             [ text "odd"
             ]
+        , button [ class "btn", onClick IncrementAsync ]
+            [ text "async"
+            ]
         ]
     ]
 
 
 view : Model -> Html Msg
 view model =
-  case Debug.log "route" model.route of
+  case model.route of
     Home () ->
       home
 
@@ -64,7 +67,7 @@ link route content =
       }
   in
     a
-      [ href (Routes.route route)
+      [ href ("#" ++ (Routes.route route))
       , onClick (RouteTo route)
       ]
       [ content ]

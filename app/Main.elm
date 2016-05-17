@@ -2,7 +2,7 @@ module Main exposing (..)
 
 
 import Html.App as Html
-import Ports exposing (path)
+import Ports exposing (path, postDelay)
 import Update exposing (Flags, Msg(..), update, init, Model)
 import View exposing (view)
 
@@ -13,10 +13,5 @@ main =
     { init = Update.init
     , update = Update.update
     , view = View.view
-    , subscriptions = subscriptions
+    , subscriptions = \_ -> Sub.batch [ path PathChanged, postDelay Increment ]
     }
-
-
-subscriptions : Model -> Sub Msg
-subscriptions model =
-  Sub.batch [ path PathChanged ]
