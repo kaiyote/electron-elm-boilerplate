@@ -1,6 +1,5 @@
-/* eslint max-len: 0 */
-import webpack from 'webpack';
-import baseConfig from './webpack.config.base';
+import webpack from 'webpack'
+import baseConfig from './webpack.config.base'
 
 const config = {
   ...baseConfig,
@@ -37,8 +36,8 @@ const config = {
   ],
 
   target: 'electron-renderer'
-};
+}
 
-config.module.loaders[0].loaders.unshift('elm-hot');
+config.module.loaders[0].loaders.unshift('elm-hot')
 
-export default config;
+export default config

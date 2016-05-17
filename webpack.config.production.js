@@ -1,5 +1,5 @@
-import webpack from 'webpack';
-import baseConfig from './webpack.config.base';
+import webpack from 'webpack'
+import baseConfig from './webpack.config.base'
 
 const config = {
   ...baseConfig,
@@ -40,6 +40,6 @@ const config = {
   ],
 
   target: 'electron-renderer'
-};
+}
 
-export default config;
+export default config
