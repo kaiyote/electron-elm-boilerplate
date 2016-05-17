@@ -10,8 +10,8 @@ import View exposing (view)
 main : Program Flags
 main =
   Html.programWithFlags
-    { init = Update.init
-    , update = Update.update
-    , view = View.view
+    { init = init
+    , update = update
+    , view = view
     , subscriptions = \_ -> Sub.batch [ path PathChanged, postDelay Increment ]
     }
