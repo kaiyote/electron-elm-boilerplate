@@ -58,6 +58,11 @@ $ npm run dev
 
 *See [electron-debug](https://github.com/sindresorhus/electron-debug) for more information.*
 
+#### Devtron
+
+Run `require('devtron').install()` in the DevTools console to install Devtron for the session.
+
+*See [Devtron](http://electron.atom.io/devtron/) for more information.*
 
 ## Externals
 

@@ -1,6 +1,5 @@
 'use strict'
 
-require('babel-polyfill')
 const os = require('os')
 const webpack = require('webpack')
 const electronCfg = require('./webpack.config.electron.js')
@@ -22,10 +21,18 @@ const DEFAULT_OPTS = {
   name: appName,
   asar: shouldUseAsar,
   ignore: [
-    '^/test($|/)',
+    '^/test(s)?($|/)',
+    '^/elm-stuff($|/)',
     '^/tools($|/)',
     '^/release($|/)',
-    '^/main.development.js'
+    '^/main.development.js',
+    '^/.*\.sublime-project$',
+    '^/elm-package.json$',
+    '^/package.js$',
+    '^/server.js$',
+    '^/webpack\..*\.js$',
+    '^/app/.*\.(elm|js)($|/)',
+    '^/.(babelrc|editorconfig|gitattributes|gitignore)$'
   ].concat(devDeps.map(name => `/node_modules/${name}($|/)`))
   .concat(
     deps.filter(name => !electronCfg.externals.includes(name))
