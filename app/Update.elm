@@ -25,7 +25,6 @@ type Msg
   | Decrement
   | IncrementIfOdd
   | IncrementAsync
-  | Swap Bool
 
 
 update : Msg -> Model -> ( Model, Cmd Msg)
@@ -51,9 +50,6 @@ update msg model =
 
     IncrementAsync ->
       ( model, perform (\_ -> Increment) (\_ -> Increment) (sleep 1000))
-
-    Swap _ ->
-      ( model, Cmd.none )
 
 
 init : Flags -> ( Model, Cmd Msg )
