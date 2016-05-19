@@ -29,7 +29,7 @@ counter model =
     [ div [ class "backButton" ] [ link (Home ()) (i [ class "fa fa-arrow-left fa-3x" ] [ ]) ]
     , div [ class "counter" ] [ text (toString model.count) ]
     , div [ class "btnGroup" ]
-        [ button [ class "btn", onClick (Increment Nothing) ]
+        [ button [ class "btn", onClick Increment ]
             [ i [ class "fa fa-plus" ] []
             ]
         , button [ class "btn", onClick Decrement ]

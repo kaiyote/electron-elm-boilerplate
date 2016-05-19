@@ -7,7 +7,7 @@ tests : Test
 tests =
   suite "Routes"
     [ test "'/' matches Home"
-        <| assertEqual (Home ()) (match "/hi")
+        <| assertEqual (Home ()) (match "/")
     , test "'/' matches Counter"
         <| assertEqual (Counter ()) (match "/counter")
     , test "bad route matches Not Found"

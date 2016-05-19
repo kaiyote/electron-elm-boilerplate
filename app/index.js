@@ -13,9 +13,3 @@ counter.ports.pushPath.subscribe((path) => {
   window.history.pushState({}, '', window.location.pathname + '#' + path)
   counter.ports.path.send(window.location.hash.split('#')[1])
 })
-
-counter.ports.delay.subscribe((delay) => {
-  setTimeout(() => {
-    counter.ports.postDelay.send(null)
-  }, delay)
-})

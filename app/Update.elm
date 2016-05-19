@@ -2,7 +2,9 @@ module Update exposing (Flags, Msg(..), Model, init, update)
 
 
 import Routes exposing (Sitemap(..))
-import Ports exposing (pushPath, delay)
+import Ports exposing (pushPath)
+import Task exposing (perform)
+import Process exposing (sleep)
 
 
 type alias Flags =
@@ -19,7 +21,7 @@ type alias Model =
 type Msg
   = PathChanged String
   | RouteTo Sitemap
-  | Increment (Maybe Bool)
+  | Increment
   | Decrement
   | IncrementIfOdd
   | IncrementAsync
@@ -35,7 +37,7 @@ update msg model =
     RouteTo route ->
       ( model, pushPath (Routes.route route) )
 
-    Increment _ ->
+    Increment ->
       ( { model | count = model.count + 1 }, Cmd.none )
 
     Decrement ->
@@ -48,7 +50,7 @@ update msg model =
         ( model, Cmd.none )
 
     IncrementAsync ->
-      ( model, delay 1000 )
+      ( model, perform (\_ -> Increment) (\_ -> Increment) (sleep 1000))
 
     Swap _ ->
       ( model, Cmd.none )
