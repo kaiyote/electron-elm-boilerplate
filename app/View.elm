@@ -1,6 +1,5 @@
 module View exposing (view)
 
-
 import Html exposing (..)
 import Html.Attributes exposing (href, class)
 import Html.Events exposing (onClick)
@@ -26,21 +25,13 @@ home =
 counter : Model -> Html Msg
 counter model =
   div []
-    [ div [ class "backButton" ] [ link (Home ()) (i [ class "fa fa-arrow-left fa-3x" ] [ ]) ]
+    [ div [ class "backButton" ] [ link (Home ()) (i [ class "fa fa-arrow-left fa-3x" ] []) ]
     , div [ class "counter" ] [ text (toString model.count) ]
     , div [ class "btnGroup" ]
-        [ button [ class "btn", onClick Increment ]
-            [ i [ class "fa fa-plus" ] []
-            ]
-        , button [ class "btn", onClick Decrement ]
-            [ i [ class "fa fa-minus" ] []
-            ]
-        , button [ class "btn", onClick IncrementIfOdd ]
-            [ text "odd"
-            ]
-        , button [ class "btn", onClick IncrementAsync ]
-            [ text "async"
-            ]
+        [ button [ class "btn", onClick Increment ] [ i [ class "fa fa-plus" ] [] ]
+        , button [ class "btn", onClick Decrement ] [ i [ class "fa fa-minus" ] [] ]
+        , button [ class "btn", onClick IncrementIfOdd ] [ text "odd" ]
+        , button [ class "btn", onClick IncrementAsync ] [ text "async" ]
         ]
     ]
 

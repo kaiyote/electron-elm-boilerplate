@@ -1,6 +1,5 @@
 module Main exposing (..)
 
-
 import Html.App as Html
 import Ports exposing (path)
 import Update exposing (Flags, Msg(..), update, init, Model)

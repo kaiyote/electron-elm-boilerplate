@@ -1,6 +1,5 @@
 module Update exposing (Flags, Msg(..), Model, init, update)
 
-
 import Routes exposing (Sitemap(..))
 import Ports exposing (pushPath)
 import Task exposing (perform)
@@ -27,7 +26,7 @@ type Msg
   | IncrementAsync
 
 
-update : Msg -> Model -> ( Model, Cmd Msg)
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
   case msg of
     PathChanged path ->
@@ -49,7 +48,7 @@ update msg model =
         ( model, Cmd.none )
 
     IncrementAsync ->
-      ( model, perform (\_ -> Increment) (\_ -> Increment) (sleep 1000))
+      ( model, perform (\_ -> Increment) (\_ -> Increment) (sleep 1000) )
 
 
 init : Flags -> ( Model, Cmd Msg )
