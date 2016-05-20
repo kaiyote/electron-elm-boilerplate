@@ -1,5 +1,6 @@
 'use strict'
 
+import './Stylesheets'
 import Elm from './Main'
 
 let container = document.getElementById('container')

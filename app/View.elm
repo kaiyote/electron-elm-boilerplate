@@ -1,10 +1,11 @@
 module View exposing (view)
 
 import Html exposing (..)
-import Html.Attributes exposing (href, class)
+import Html.Attributes as Attr exposing (href)
 import Html.Events exposing (onClick)
 import Routes exposing (Sitemap(..))
 import Update exposing (Msg(..), Model)
+import Styles.Styles as Css exposing (homeNamespace, counterNamespace)
 
 
 notFound : Html Msg
@@ -14,26 +15,34 @@ notFound =
 
 home : Html Msg
 home =
-  div []
-    [ div [ class "container" ]
-        [ h2 [] [ text "Home" ]
-        , link (Counter ()) (text "to Counter")
-        ]
-    ]
+  let
+    { class } =
+      homeNamespace
+  in
+    div []
+      [ div [ class [ Css.Container ] ]
+          [ h2 [] [ text "Home" ]
+          , link (Counter ()) (text "to Counter")
+          ]
+      ]
 
 
 counter : Model -> Html Msg
 counter model =
-  div []
-    [ div [ class "backButton" ] [ link (Home ()) (i [ class "fa fa-arrow-left fa-3x" ] []) ]
-    , div [ class "counter" ] [ text (toString model.count) ]
-    , div [ class "btnGroup" ]
-        [ button [ class "btn", onClick Increment ] [ i [ class "fa fa-plus" ] [] ]
-        , button [ class "btn", onClick Decrement ] [ i [ class "fa fa-minus" ] [] ]
-        , button [ class "btn", onClick IncrementIfOdd ] [ text "odd" ]
-        , button [ class "btn", onClick IncrementAsync ] [ text "async" ]
-        ]
-    ]
+  let
+    { class } =
+      counterNamespace
+  in
+    div []
+      [ div [ class [ Css.BackButton ] ] [ link (Home ()) (i [ Attr.class "fa fa-arrow-left fa-3x" ] []) ]
+      , div [ class [ Css.Counter ] ] [ text (toString model.count) ]
+      , div [ class [ Css.ButtonGroup ] ]
+          [ button [ class [ Css.Button ], onClick Increment ] [ i [ Attr.class "fa fa-plus" ] [] ]
+          , button [ class [ Css.Button ], onClick Decrement ] [ i [ Attr.class "fa fa-minus" ] [] ]
+          , button [ class [ Css.Button ], onClick IncrementIfOdd ] [ text "odd" ]
+          , button [ class [ Css.Button ], onClick IncrementAsync ] [ text "async" ]
+          ]
+      ]
 
 
 view : Model -> Html Msg

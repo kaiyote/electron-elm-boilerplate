@@ -4,8 +4,11 @@ export default {
   module: {
     loaders: [{
       test: /\.elm$/,
-      exclude: [/elm-stuff/, /node_modules/],
+      exclude: [/elm-stuff/, /node_modules/, /Stylesheets.elm/],
       loaders: ['elm-webpack']
+    }, {
+      test: /Stylesheets.elm$/,
+      loaders: ['style', 'css', 'elm-css-webpack']
     }, {
       test: /\.js$/,
       exclude: [/node_modules/],
@@ -13,8 +16,7 @@ export default {
     }, {
       test: /\.json$/,
       loader: 'json'
-    }],
-    noParse: /\.elm$/
+    }]
   },
   output: {
     path: path.join(__dirname, 'dist'),
