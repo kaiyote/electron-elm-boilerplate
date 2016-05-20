@@ -26,12 +26,12 @@ const DEFAULT_OPTS = {
     '^/tools($|/)',
     '^/release($|/)',
     '^/main.development.js',
-    '^/.*\.sublime-project$',
+    '^/.*.sublime-project$',
     '^/elm-package.json$',
     '^/package.js$',
     '^/server.js$',
-    '^/webpack\..*\.js$',
-    '^/app/.*\.(elm|js)($|/)',
+    '^/webpack..*.js$',
+    '^/app/.*.(elm|js)($|/)',
     '^/.(babelrc|editorconfig|gitattributes|gitignore)$'
   ].concat(devDeps.map(name => `/node_modules/${name}($|/)`))
   .concat(

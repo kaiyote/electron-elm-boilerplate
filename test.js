@@ -47,7 +47,7 @@ test.serial('the buttons on counter screen function', async t => {
   await app.client.click('.btn:nth-child(3)')
   t.is('0', await app.client.getText('.counter'))
   await app.client.click('.btn:last-child')
-  await app.client.waitUntil(() => app.client.getText('.counter').then((text) => '1' === text))
+  await app.client.waitUntil(() => app.client.getText('.counter').then((text) => text === '1'))
   await app.client.click('.btn:nth-child(3)')
   t.is('2', await app.client.getText('.counter'))
 })
