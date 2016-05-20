@@ -19,7 +19,13 @@ const config = {
   module: {
     ...baseConfig.module,
     loaders: [
-      ...baseConfig.module.loaders
+      ...baseConfig.module.loaders,
+
+      {
+        test: /Stylesheets.elm$/,
+        exclude: [/elm-stuff/, /node_modules/],
+        loaders: ['style', 'css', 'elm-css-webpack']
+      }
     ]
   },
 

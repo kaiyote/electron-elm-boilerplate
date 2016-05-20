@@ -7,9 +7,6 @@ export default {
       exclude: [/elm-stuff/, /node_modules/, /Stylesheets.elm/],
       loaders: ['elm-webpack']
     }, {
-      test: /Stylesheets.elm$/,
-      loaders: ['style', 'css', 'elm-css-webpack']
-    }, {
       test: /\.js$/,
       exclude: [/node_modules/],
       loader: 'babel'

@@ -4,7 +4,16 @@
     <meta charset="utf-8" />
     <title>electron-elm-boilerplate example</title>
     <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css" />
-    <!-- <link href="./style.css" rel="stylesheet" /> -->
+    <script>
+      (function() {
+        if (!process.env.HOT) {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = '../dist/style.css';
+          document.write(link.outerHTML);
+        }
+      }());
+    </script>
   </head>
   <body>
     <div id="container"></div>

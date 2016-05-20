@@ -1,4 +1,5 @@
 import webpack from 'webpack'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import baseConfig from './webpack.config.base'
 
 const config = {
@@ -18,7 +19,13 @@ const config = {
     ...baseConfig.module,
 
     loaders: [
-      ...baseConfig.module.loaders
+      ...baseConfig.module.loaders,
+
+      {
+        test: /Stylesheets.elm$/,
+        exclude: [/elm-stuff/, /node_modules/],
+        loader: ExtractTextPlugin.extract('style', 'css!elm-css-webpack')
+      }
     ]
   },
 
@@ -36,7 +43,8 @@ const config = {
         screw_ie8: true,
         warnings: false
       }
-    })
+    }),
+    new ExtractTextPlugin('style.css', { allChunks: true })
   ],
 
   target: 'electron-renderer'
