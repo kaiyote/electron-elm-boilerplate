@@ -25,6 +25,9 @@ $ cd your-project-name && npm install
 
 This project is configured to require Node 6+. If you don't have that installed, you'll either need to augment the babel setup or upgrade your node.
 
+### NOTE
+You'll need to delete `elm-css-webpack-loader`s version of `elm-css`. `elm-css` recently updated and the old version doesn't function correctly.
+
 
 ## Run
 
